@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  redis:
+    container_name: redis_container
+    image: redis:6.0.8
+    restart: "always"
+    ports:
+      - "6379"
+    networks:
+      - backend
+
+  gone:
+    environment:
+      - REDIS_ADDR=redis:6379
+    container_name: gone_container
+    image: localhost:5000/gone
+    restart: "always"
+    depends_on:
+      - "redis"
+    ports:
+      - "8080:8080"
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
