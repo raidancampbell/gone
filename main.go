@@ -43,6 +43,8 @@ func main() {
 	r.GET("/api/v1/complete/:sid/:rid", redisWrapper(rs, rds, handlers.CompletionHandler))
 	r.GET("/api/v1/completed/:sid/:rid", redisWrapper(rs, rds, handlers.CompletionQueryHandler))
 
+	r.GET("/alive", handlers.HealthHandler)
+
 	addr := ":8080"
 	panic(r.Run(addr))
 }

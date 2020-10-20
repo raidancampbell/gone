@@ -11,6 +11,7 @@ ENTRYPOINT /bin/gone
 
 # usage:
 # docker build -t localhost:5000/gone . && docker push localhost:5000/gone
+# docker build -t nuc:5000/gone . && docker push nuc:5000/gone
 
 
 # to run a local registry:
